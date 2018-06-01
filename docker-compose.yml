@@ -1,0 +1,13 @@
+version: '${COMPOSE_VERSION}'
+
+services:
+  zbx-agent:
+    image: zabbix/zabbix-agent:${ZBX_TAG}
+    container_name: zbx-agent
+    environment:
+      ZBX_HOSTNAME: $(HOSTNAME)
+      ZBX_SERVER_HOST: ${ZBX_SERVER}
+    restart: always
+    ports:
+      - "10050:10050"
+
